@@ -59,23 +59,33 @@ li:hover{transform:translateY(-6px)}
 #hello{
   font-size:3rem;
   font-weight:800;
-  margin-bottom:2rem;
+  margin-bottom:1.5rem;
 }
 
-/* BUTTON */
-#magicBtn{
+/* BUTTONS */
+button{
   padding:1rem 3rem;
-  font-size:1.5rem;
+  font-size:1.4rem;
   font-weight:700;
   border:none;
   border-radius:50px;
   cursor:pointer;
-  background:#ff6f61;
-  color:white;
-  box-shadow:0 12px 25px rgba(0,0,0,.3);
+  box-shadow:0 10px 20px rgba(0,0,0,.25);
   transition:.2s;
 }
-#magicBtn:hover{transform:translateY(-4px)}
+
+button:hover{transform:translateY(-4px)}
+
+#magicBtn{
+  background:#ff6f61;
+  color:white;
+}
+
+#backBtn{
+  margin-top:1.5rem;
+  background:#333;
+  color:white;
+}
 
 /* TEXT */
 #textBox{
@@ -116,6 +126,7 @@ li:hover{transform:translateY(-6px)}
   <div id="hello"></div>
   <button id="magicBtn">JAADOO</button>
   <div id="textBox"></div>
+  <button id="backBtn">⬅ Back</button>
 </div>
 
 <audio id="blastSound">
@@ -140,6 +151,7 @@ const hello=document.getElementById("hello");
 const btn=document.getElementById("magicBtn");
 const text=document.getElementById("textBox");
 const sound=document.getElementById("blastSound");
+const backBtn=document.getElementById("backBtn");
 
 names.forEach(n=>{
   const li=document.createElement("li");
@@ -150,6 +162,7 @@ names.forEach(n=>{
 
 function openPage(name){
   hello.textContent=`Hello, ${name}`;
+  text.textContent="";
   page2.classList.add("show");
 }
 
@@ -159,7 +172,18 @@ btn.onclick=()=>{
   startFireworks();
 
   text.textContent="Thanks for Visiting Our Website";
-  setTimeout(()=>text.textContent="Dikh Gaya Jaadu 😂",2000);
+
+  setTimeout(()=>{
+    text.textContent="Dikh Gaya Jaadu 😂";
+  },2000);
+
+  setTimeout(()=>{
+    text.textContent="Ab Padhle Exams hai 😂";
+  },4000);
+};
+
+backBtn.onclick=()=>{
+  page2.classList.remove("show");
 };
 
 // FIREWORKS
